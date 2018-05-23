@@ -23,15 +23,15 @@
     </url>
 
     <url>
-        <loc>http://yoursite-url/tags/Hyperledger/</loc>
-        <lastmod>2018-05-23T13:53:01.734Z</lastmod>
+        <loc>http://yoursite-url/tags/concept/</loc>
+        <lastmod>2018-05-23T14:09:21.963Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://yoursite-url/tags/concept/</loc>
-        <lastmod>2018-05-23T13:53:01.734Z</lastmod>
+        <loc>http://yoursite-url/tags/Hyperledger/</loc>
+        <lastmod>2018-05-23T14:09:21.963Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

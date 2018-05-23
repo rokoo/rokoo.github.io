@@ -86,9 +86,9 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Hyperledger" title="Hyperledger">Hyperledger</a>
-                            
                               <a class="tag" href="/tags/#concept" title="concept">concept</a>
+                            
+                              <a class="tag" href="/tags/#Hyperledger" title="Hyperledger">Hyperledger</a>
                             
                         </div>
                         <h1>Hyperledger概念理解（一）</h1>
@@ -142,13 +142,6 @@
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
-                        </li>
-                        
-                    
-
-                        
-                        <li>
                             <a href="/about/">About</a>
                         </li>
                         
@@ -157,6 +150,13 @@
                         
                         <li>
                             <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
@@ -216,7 +216,15 @@
 <p>对Hyperledger中的一些概念记录下个人的理解，这是系列文章一</p>
 </blockquote>
 <h1><span id="transactions事务">Transactions（事务）</span></h1>
-<p>Hyperledger的transactions（事务）有两种</p>
+<p><a href="http://hyperledger-fabric.readthedocs.io/en/release-1.1/arch-deep-dive.html#transactions" target="_blank" rel="noopener">Hyperledger 官方对事务描述如下</a></p>
+<blockquote>
+<p>Transactions may be of two types:</p>
+<ul>
+<li>Deploy transactions create new chaincode and take a program as parameter. When a deploy transaction executes successfully, the chaincode has been installed “on” the blockchain.</li>
+<li>Invoke transactions perform an operation in the context of previously deployed chaincode. An invoke transaction refers to a chaincode and to one of its provided functions. When successful, the chaincode executes the specified function - which may involve modifying the corresponding state, and returning an output.<br>
+Hyperledger的transactions（事务）有两种</li>
+</ul>
+</blockquote>
 <ul>
 <li>部署事务<br>
 以一个chaincode作为输入参数，部署事务成功，chaincode就被部署到区块链中</li>
@@ -224,6 +232,16 @@
 通过调用部署在区块链中的chaincode中某一个函数，当调用事务执行成功，chaincode函数将完成执中并返回执行结果</li>
 </ul>
 <h1><span id="node节点">Node(节点)</span></h1>
+<p><a href="http://hyperledger-fabric.readthedocs.io/en/release-1.1/arch-deep-dive.html#nodes" target="_blank" rel="noopener">Hyperledger官网对Nodes描述如下</a></p>
+<blockquote>
+<p>Nodes are the communication entities of the blockchain. A “node” is only a logical function in the sense that multiple nodes of different types can run on the same physical server. What counts is how nodes are grouped in “trust domains” and associated to logical entities that control them.<br>
+There are three types of nodes:</p>
+<ul>
+<li>Client or submitting-client: a client that submits an actual transaction-invocation to the endorsers, and broadcasts transaction-proposals to the ordering service.</li>
+<li>Peer: a node that commits transactions and maintains the state and a copy of the ledger (see Sec, 1.2). Besides, peers can have a special endorser role.</li>
+<li>Ordering-service-node or orderer: a node running the communication service that implements a delivery guarantee, such as atomic or total order broadcast.</li>
+</ul>
+</blockquote>
 <p>节点是区块链中的连结实体，对应区块链网络中的一个物理服务器，节点有三种角色，分别是Client， Peer，Orderer，并且一个Node可以有同时拥有多个角色。</p>
 <h2><span id="client客户端">Client（客户端）</span></h2>
 <p>客户端指发起事务请求、广播proposal到排序节点的个体节点。</p>
@@ -286,9 +304,9 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Hyperledger" title="Hyperledger">Hyperledger</a>
-                        
                           <a class="tag" href="/tags/#concept" title="concept">concept</a>
+                        
+                          <a class="tag" href="/tags/#Hyperledger" title="Hyperledger">Hyperledger</a>
                         
                     </div>
                 </section>
