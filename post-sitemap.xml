@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://yoursite-url/2018/05/23/hyperledger-architecture1/</loc>
+        <lastmod>2018-05-23T13:53:01.734Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://yoursite-url/2018/05/22/tennis/</loc>
         <lastmod>2018-05-23T12:45:39.534Z</lastmod>
         <changefreq>weekly</changefreq>
