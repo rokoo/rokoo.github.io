@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          [Hexo] Theme BeanTech - Ben Kwok | 郭晓斌
+          使用node-forge库实现生成数字证书以及使用证书签名验证的代码示例 - Ben Kwok | 郭晓斌
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/2017/03/18/hexo-theme-beantech/">
+    <link rel="canonical" href="http://yoursite-url/2018/05/24/generate-certification-file/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,7 +69,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('Demo.png')
+            background-image: url('/img/header_img/header-bg-railway.jpg')
             /*post*/
         
     }
@@ -86,16 +86,18 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                              <a class="tag" href="/tags/#nodejs" title="nodejs">nodejs</a>
                             
-                              <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                              <a class="tag" href="/tags/#forge" title="forge">forge</a>
+                            
+                              <a class="tag" href="/tags/#数字证书" title="数字证书">数字证书</a>
                             
                         </div>
-                        <h1>[Hexo] Theme BeanTech</h1>
-                        <h2 class="subheading">This is hexo theme Demo.</h2>
+                        <h1>使用node-forge库实现生成数字证书以及使用证书签名验证的代码示例</h1>
+                        <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Ben Kwok on
-                            2017-03-18
+                            2018-05-24
                         </span>
                     </div>
                 
@@ -213,70 +215,27 @@
                 post-container">
 
                 <blockquote>
-<p>Ported Theme of <a href="https://github.com/Huxpro/huxpro.github.io" target="_blank" rel="noopener">Hux Blog</a>, Thank <a href="https://github.com/Huxpro" target="_blank" rel="noopener">Huxpro</a> for designing such a flawless theme.</p>
-<p>This BeanTech theme created by <a href="http://beantech.org" target="_blank" rel="noopener">YuHsuan</a> modified from the original Porter <a href="http://kaijun.rocks/hexo-theme-huxblog/" target="_blank" rel="noopener">Kaijun</a></p>
+<p>使用node-forge库创建数字证书，并使用私钥签名，用证书的公钥验证签名</p>
 </blockquote>
-<h1><span id="live-demo"></span></h1>
-<hr>
-<p><img src="http://beantech.org/img/beantech-desktop.png" alt="BeanTech Desktop"></p>
-<h1><span id="usage">Usage</span></h1>
-<hr>
-<p>I publish the whole project for your convenience, so you can just follow the instruction down below, then you can easily customiz your own blog!</p>
-<p>Let’s begin!!!</p>
-<h2><span id="init">Init</span></h2>
-<hr>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/YenYuHsuan/hexo-theme-beantech.git ./hexo-beantech</span><br><span class="line"><span class="built_in">cd</span> hexo-beantech</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-<h2><span id="modify">Modify</span></h2>
-<hr>
-<p>Modify <code>_config.yml</code> file with your own info.<br>
-Especially the section:</p>
-<h3><span id="deployment">Deployment</span></h3>
-<p>Replace to your own repo!</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github.com/&lt;yourAccount&gt;/&lt;repo&gt;</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">&lt;your-branch&gt;</span></span><br></pre></td></tr></table></figure>
-<h3><span id="sidebar-settings">Sidebar settings</span></h3>
-<p>Copy your avatar image to <code>&lt;root&gt;/img/</code> and modify the <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sidebar:</span> <span class="literal">true</span>    <span class="comment"># whether or not using Sidebar.</span></span><br><span class="line"><span class="attr">sidebar-about-description:</span> <span class="string">"&lt;your description&gt;"</span></span><br><span class="line"><span class="attr">sidebar-avatar:</span> <span class="string">img/&lt;your</span> <span class="string">avatar</span> <span class="string">path&gt;</span></span><br></pre></td></tr></table></figure>
-<p>and activate your personal widget you like</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">widgets:</span>         <span class="comment"># here are widget you can use, you can comment out</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">featured-tags</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">short-about</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">recent-posts</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">friends-blog</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">archive</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">category</span></span><br></pre></td></tr></table></figure>
-<p>if you want to add sidebar widget, please add at <code>layout/_widget</code>.</p>
-<h3><span id="signature-setup">Signature Setup</span></h3>
-<p>Copy your signature image to <code>&lt;root&gt;/img/signature</code> and modify the <code>_config.yml</code>:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">signature:</span> <span class="literal">true</span>   <span class="comment"># show signature</span></span><br><span class="line"><span class="attr">signature-img:</span> <span class="string">img/signature/&lt;your-signature-ID&gt;</span></span><br></pre></td></tr></table></figure>
-<h3><span id="go-to-top-icon-setup">Go to top icon Setup</span></h3>
-<p>My icon is using iron man, you can change to your own icon at <code>css/image</code>.</p>
-<h3><span id="post-tag">Post tag</span></h3>
-<p>You can decide to show post tags or not.</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">home_posts_tag:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p><img src="home_posts_tag-true.png" alt="home_posts_tag-true"></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">home_posts_tag:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-<p><img src="home_posts_tag-false.png" alt="home_posts_tag-false"></p>
-<h3><span id="markdown-render">Markdown render</span></h3>
-<p>My markdown render engine plugin is <a href="https://github.com/celsomiranda/hexo-renderer-markdown-it" target="_blank" rel="noopener">hexo-renderer-markdown-it</a>.</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Markdown-it config</span></span><br><span class="line"><span class="comment">## Docs: https://github.com/celsomiranda/hexo-renderer-markdown-it/wiki</span></span><br><span class="line"><span class="attr">markdown:</span></span><br><span class="line"><span class="attr">  render:</span></span><br><span class="line"><span class="attr">    html:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    xhtmlOut:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">    breaks:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    linkify:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    typographer:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    quotes:</span> <span class="string">'“”‘’'</span></span><br></pre></td></tr></table></figure>
-<p>and if you want to change the header anchor ‘ℬ’, you can go to <code>layout/post.ejs</code> to change it.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span>(<span class="string">"https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        anchors.options = &#123;</span><br><span class="line">          visible: <span class="string">'hover'</span>,</span><br><span class="line">          placement: <span class="string">'left'</span>,</span><br><span class="line">          icon: ℬ <span class="comment">// this is the header anchor "unicode" icon</span></span><br><span class="line">        &#125;;</span><br></pre></td></tr></table></figure>
-<h2><span id="hexo-basics">Hexo Basics</span></h2>
-<hr>
-<p>Some hexo command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">"&lt;post name&gt;"</span> <span class="comment"># you can change post to another layout if you want</span></span><br><span class="line">hexo clean &amp;&amp; hexo generate <span class="comment"># generate the static file</span></span><br><span class="line">hexo server <span class="comment"># run hexo in local environment</span></span><br><span class="line">hexo deploy <span class="comment"># hexo will push the static files automatically into the specific branch(gh-pages) of your repo!</span></span><br></pre></td></tr></table></figure>
-<h1><span id="have-fun-_">Have fun ^_^</span></h1>
-<hr>
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-<!-- Place this tag where you want the button to render. -->
-<p>Please <a class="github-button" href="https://github.com/YenYuHsuan/hexo-theme-beantech" data-icon="octicon-star" aria-label="Star YenYuHsuan/hexo-theme-beantech on GitHub" target="_blank" rel="noopener">Star</a> this Project if you like it! <a class="github-button" href="https://github.com/YenYuHsuan" aria-label="Follow @YenYuHsuan on GitHub" target="_blank" rel="noopener">Follow</a> would also be appreciated!<br>
-Peace!</p>
-
+<h2><span id="具体实现步骤">具体实现步骤</span></h2>
+<h3><span id="根据用户名随机生成一对密钥用公钥生成证书并用私钥签名">根据用户名随机生成一对密钥，用公钥生成证书并用私钥签名</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">generateUserCert</span>(<span class="params">username</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// generate a keypair or use one you have already</span></span><br><span class="line">    <span class="keyword">var</span> keys = pki.rsa.generateKeyPair(<span class="number">2048</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// create a new certificate</span></span><br><span class="line">    <span class="keyword">var</span> cert = pki.createCertificate();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// fill the required fields</span></span><br><span class="line">    cert.publicKey = keys.publicKey;</span><br><span class="line">    cert.serialNumber = <span class="string">'01'</span>;</span><br><span class="line">    cert.validity.notBefore = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    cert.validity.notAfter = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// use your own attributes here, or supply a csr (check the docs)</span></span><br><span class="line">    <span class="keyword">var</span> attrs = [];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// here we set subject and issuer as the same one</span></span><br><span class="line">    cert.setSubject(attrs);</span><br><span class="line">    cert.setIssuer(attrs);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// the actual certificate signing</span></span><br><span class="line">    cert.sign(keys.privateKey);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// now convert the Forge certificate to PEM format</span></span><br><span class="line">    <span class="keyword">var</span> pem = pki.certificateToPem(cert);</span><br><span class="line">    <span class="keyword">let</span> cerFilePath = <span class="string">"../certifications/"</span> + username + <span class="string">".cer"</span>;</span><br><span class="line">    <span class="keyword">let</span> privateKeyFilePath = <span class="string">"../certifications/"</span> + username + <span class="string">".key"</span>;</span><br><span class="line">    <span class="keyword">var</span> privateKey = forge.pki.privateKeyToPem(keys.privateKey);</span><br><span class="line">    <span class="keyword">return</span> saveFile(cerFilePath, pem).then(saveFile(privateKeyFilePath, privateKey)).then(<span class="built_in">console</span>.log(<span class="string">"all save success"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="将证书和私钥保存在文件中">将证书和私钥保存在文件中</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveFile</span>(<span class="params">filepath, fileData</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 块方式写入文件</span></span><br><span class="line">        fs.writeFile(filepath, fileData);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="用私钥给一段数据签名">用私钥给一段数据签名</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">signDocWithUserCer</span>(<span class="params">docData, username</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> userPrivateKey = getPrivateKeyOfUser(username);</span><br><span class="line">    <span class="keyword">var</span> privateKeyPem = getPrivateKeyOfUser(username)</span><br><span class="line">    <span class="keyword">var</span> privateKey = forge.pki.privateKeyFromPem(privateKeyPem);</span><br><span class="line">    <span class="keyword">var</span> md = forge.md.sha1.create();</span><br><span class="line">    md.update(docData, <span class="string">'utf8'</span>);</span><br><span class="line">    <span class="keyword">var</span> signature = privateKey.sign(md);</span><br><span class="line">    <span class="keyword">return</span> signature;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3><span id="用证书中的公钥调用verify函数验证可以解开即证明该公钥是该用户提供">用证书中的公钥调用verify函数验证，可以解开即证明该公钥是该用户提供。</span></h3>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">verifySignature</span>(<span class="params">docData, username, signature</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> priateKeyPem = getPemCertOfUser(username);</span><br><span class="line">    <span class="keyword">var</span> certfrompem = forge.pki.certificateFromPem(priateKeyPem);</span><br><span class="line">    <span class="keyword">var</span> md = forge.md.sha1.create();</span><br><span class="line">    md.update(docData, <span class="string">'utf8'</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> certfrompem.publicKey.verify(md.digest().bytes(), signature);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
                 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2018/05/22/tennis/" data-toggle="tooltip" data-placement="top" title="shim层概念理解">&larr; Previous Post</a>
-                        </li>
                     
+                        <li class="next">
+                            <a href="/2018/05/23/hyperledger-architecture1/" data-toggle="tooltip" data-placement="top" title="Hyperledger概念理解（一）">Next Post &rarr;</a>
+                        </li>
                     
                 </ul>
 
@@ -301,7 +260,7 @@ Peace!</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Usage</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Init</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Modify</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Deployment</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">Sidebar settings</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">Signature Setup</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">Go to top icon Setup</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.5.</span> <span class="toc-nav-text">Post tag</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.6.</span> <span class="toc-nav-text">Markdown render</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Hexo Basics</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Have fun ^_^</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">具体实现步骤</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">根据用户名随机生成一对密钥，用公钥生成证书并用私钥签名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">将证书和私钥保存在文件中</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">用私钥给一段数据签名</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">用证书中的公钥调用verify函数验证，可以解开即证明该公钥是该用户提供。</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -321,9 +280,11 @@ Peace!</p>
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Hexo" title="Hexo">Hexo</a>
+                          <a class="tag" href="/tags/#nodejs" title="nodejs">nodejs</a>
                         
-                          <a class="tag" href="/tags/#Blog" title="Blog">Blog</a>
+                          <a class="tag" href="/tags/#forge" title="forge">forge</a>
+                        
+                          <a class="tag" href="/tags/#数字证书" title="数字证书">数字证书</a>
                         
                     </div>
                 </section>
