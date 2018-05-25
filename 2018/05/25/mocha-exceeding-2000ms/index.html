@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Ben Kwok | 郭晓斌
+          mocha exceeding 2000ms timeout问题解决办法 - Ben Kwok | 郭晓斌
         
     </title>
 
-    <link rel="canonical" href="http://yoursite-url/">
+    <link rel="canonical" href="http://yoursite-url/2018/05/25/mocha-exceeding-2000ms/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -69,8 +69,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/header-bg-railway.jpg') 
-            /*config*/
+            background-image: url('/img/header_img/header-bg-railway.jpg')
+            /*post*/
         
     }
     
@@ -83,10 +83,20 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>Beware beginning</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading">运动， 读书， 写作， 编程</span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#mocha" title="mocha">mocha</a>
+                            
+                              <a class="tag" href="/tags/#timeout" title="timeout">timeout</a>
+                            
+                        </div>
+                        <h1>mocha exceeding 2000ms timeout问题解决办法</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Ben Kwok on
+                            2018-05-25
+                        </span>
                     </div>
                 
 
@@ -189,342 +199,130 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>今天写mocha单元测试的时候遇到mocha timeout 问题，具体报错如下</p>
+<blockquote>
+<p>Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure “done()” is called; if returning a Promise, ensure it resolves.</p>
+</blockquote>
+<p>原因是mocha默认测试超时设置为2000ms，刚好我测试的function需要保存文件，所以有时会超过2000ms,就报失败了。</p>
+<p>解决的办法有两种，一种是在mocha命令后面加上超时参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mocha --timeout 5000</span><br></pre></td></tr></table></figure>
+<p>但这样每次跑这个测试的时候都要记得加上参数<br>
+另一种方法是在测试函数用例上加上this.timeout(5000),但我加上后发现会报错this.timeout is not a function<br>
+原来是这种方法不能加在箭头函数中，即以下例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should generate cer file and key file'</span>, (done)=&gt; &#123;</span><br><span class="line">        <span class="keyword">this</span>.timeout(mochaTimeOut)</span><br><span class="line">        certUtils.generateUserCert(<span class="string">'test'</span>);</span><br><span class="line">        done();</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>必须改成下面的写法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">it(<span class="string">'should generate cer file and key file'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">done</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.timeout(mochaTimeOut)</span><br><span class="line">        certUtils.generateUserCert(<span class="string">'test'</span>);</span><br><span class="line">        done();</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/2018/05/24/generate-certification-file/" data-toggle="tooltip" data-placement="top" title="使用node-forge库实现生成数字证书以及使用证书签名验证的代码示例">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
             
-                <!-- Main Content -->
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
 
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
 
-<div class="post-preview">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#mocha" title="mocha">mocha</a>
+                        
+                          <a class="tag" href="/tags/#timeout" title="timeout">timeout</a>
+                        
+                    </div>
+                </section>
+                
 
-    <a href="/2018/05/25/mocha-exceeding-2000ms/">
-        <h2 class="post-title">
-            mocha exceeding 2000ms timeout问题解决办法
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            今天写mocha单元测试的时候遇到mocha timeout 问题，具体报错如下
-
-Error: Timeout of 2000ms exceeded. For async tests and hooks, ensure “done()” is called; if returning a Promise, ensure it resolves.
-
-原因是mocha默认测试超时设置为2000......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Ben Kwok on
-            2018-05-25
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#mocha" title="mocha">mocha</a>
-            
-              <a href="/tags/#timeout" title="timeout">timeout</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/05/24/generate-certification-file/">
-        <h2 class="post-title">
-            使用node-forge库实现生成数字证书以及使用证书签名验证的代码示例
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-使用node-forge库创建数字证书，并使用私钥签名，用证书的公钥验证签名
-
-具体实现步骤
-根据用户名随机生成一对密钥，用公钥生成证书并用私钥签名
-12345678910111213141516171819202122232425262728293031function generateUserCert(username) &#123;    // generate a keypair ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Ben Kwok on
-            2018-05-24
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#nodejs" title="nodejs">nodejs</a>
-            
-              <a href="/tags/#forge" title="forge">forge</a>
-            
-              <a href="/tags/#数字证书" title="数字证书">数字证书</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/05/23/hyperledger-architecture1/">
-        <h2 class="post-title">
-            Hyperledger概念理解（一）
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-对Hyperledger中的一些概念记录下个人的理解，这是系列文章一
-
-Transactions（事务）
-Hyperledger 官方对事务描述如下
-
-Transactions may be of two types:
-
-Deploy transactions create new chaincode and take a program as parameter. When a depl......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Ben Kwok on
-            2018-05-23
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Hyperledger" title="Hyperledger">Hyperledger</a>
-            
-              <a href="/tags/#concept" title="concept">concept</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2018/05/22/tennis/">
-        <h2 class="post-title">
-            shim层概念理解
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            
-最近在做区块链项目，在学习Hyperledger 时需要看很多英文资料，很多次看到shim这个名词，不是很理解，做了下作业，发现有个解释比较好理解，在这里翻译一下供大家参考。
-
-shim概念理解
-以下是原文
-
-A shim is typically something written specifically to maintain backwards compatibility. For......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Ben Kwok on
-            2018-05-22
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#concept" title="concept">concept</a>
-            
-              <a href="/tags/#shim" title="shim">shim</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-<div class="post-preview">
-
-    <a href="/2017/03/18/hexo-theme-beantech/">
-        <h2 class="post-title">
-            [Hexo] Theme BeanTech
-        </h2>
-        <h3 class="post-subtitle">
-            This is hexo theme Demo.
-        </h3>
-        <div class="post-content-preview">
-            
-Ported Theme of Hux Blog, Thank Huxpro for designing such a flawless theme.
-This BeanTech theme created by YuHsuan modified from the original Porter Kaijun
-
-Live Demo
-
-
-Usage
-
-I publish the whole ......
-        </div>
-    </a>
-    
-        <p class="post-meta" style="margin: 10px 0;">
-            Posted by Ben Kwok on
-            2017-03-18
-        </p>
-        <div class="tags">
-            
-              <a href="/tags/#Hexo" title="Hexo">Hexo</a>
-            
-              <a href="/tags/#Blog" title="Blog">Blog</a>
-            
-        </div>
-    
-
-</div>
-<hr>
-
-
-
-<!-- Pager -->
-
-<ul class="pager">
-    
-    
-</ul>
-
-
-
-                <!-- 如果开启评论功能 -->
+                <!-- Friends Blog -->
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-            <a href="/tags/#concept" title="concept" rel="2">concept</a>
-            
-        
-            
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/avatar.jpg" />
-        
 
-        
-            <p>Hi, i&#39;m Ben Kwok</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/rokoo">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/2018/05/25/mocha-exceeding-2000ms/">mocha exceeding 2000ms timeout问题解决办法</a>
-        </li>
-      
-        <li>
-          <a href="/2018/05/24/generate-certification-file/">使用node-forge库实现生成数字证书以及使用证书签名验证的代码示例</a>
-        </li>
-      
-        <li>
-          <a href="/2018/05/23/hyperledger-architecture1/">Hyperledger概念理解（一）</a>
-        </li>
-      
-        <li>
-          <a href="/2018/05/22/tennis/">shim层概念理解</a>
-        </li>
-      
-        <li>
-          <a href="/2017/03/18/hexo-theme-beantech/">[Hexo] Theme BeanTech</a>
-        </li>
-      
-    </ul>
-  </div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
 
 
     <!-- Footer -->

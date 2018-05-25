@@ -215,7 +215,7 @@
                 <blockquote>
 <p>对Hyperledger中的一些概念记录下个人的理解，这是系列文章一</p>
 </blockquote>
-<h1><span id="transactions事务">Transactions（事务）</span></h1>
+<h1 id="transactions事务">Transactions（事务）</h1>
 <p><a href="http://hyperledger-fabric.readthedocs.io/en/release-1.1/arch-deep-dive.html#transactions" target="_blank" rel="noopener">Hyperledger 官方对事务描述如下</a></p>
 <blockquote>
 <p>Transactions may be of two types:</p>
@@ -231,7 +231,7 @@
 <li>调用事务<br>
 通过调用部署在区块链中的chaincode中某一个函数，当调用事务执行成功，chaincode函数将完成执中并返回执行结果</li>
 </ul>
-<h1><span id="node节点">Node(节点)</span></h1>
+<h1 id="node节点">Node(节点)</h1>
 <p><a href="http://hyperledger-fabric.readthedocs.io/en/release-1.1/arch-deep-dive.html#nodes" target="_blank" rel="noopener">Hyperledger官网对Nodes描述如下</a></p>
 <blockquote>
 <p>Nodes are the communication entities of the blockchain. A “node” is only a logical function in the sense that multiple nodes of different types can run on the same physical server. What counts is how nodes are grouped in “trust domains” and associated to logical entities that control them.<br>
@@ -243,11 +243,11 @@ There are three types of nodes:</p>
 </ul>
 </blockquote>
 <p>节点是区块链中的连结实体，对应区块链网络中的一个物理服务器，节点有三种角色，分别是Client， Peer，Orderer，并且一个Node可以有同时拥有多个角色。</p>
-<h2><span id="client客户端">Client（客户端）</span></h2>
+<h2 id="client客户端">Client（客户端）</h2>
 <p>客户端指发起事务请求、广播proposal到排序节点的个体节点。</p>
-<h2><span id="peer账本节点">Peer（账本节点）</span></h2>
+<h2 id="peer账本节点">Peer（账本节点）</h2>
 <p>账本节点的主要职责是提交事务并且维护一份账本的副本。</p>
-<h2><span id="orderer排序节点">Orderer（排序节点）</span></h2>
+<h2 id="orderer排序节点">Orderer（排序节点）</h2>
 <p>排序节点承担交付保证的责任，接收收到足够背书的事务并且广播到peer节点，让peer节点提交事务并且更新账本。</p>
 
                 
@@ -288,7 +288,7 @@ There are three types of nodes:</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Transactions（事务）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Node(节点)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Client（客户端）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Peer（账本节点）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#undefined"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Orderer（排序节点）</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#transactions事务"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Transactions（事务）</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#node节点"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Node(节点)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#client客户端"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">Client（客户端）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#peer账本节点"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">Peer（账本节点）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#orderer排序节点"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">Orderer（排序节点）</span></a></li></ol></li></ol>
         
         </div>
       </aside>

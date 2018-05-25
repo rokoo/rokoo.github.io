@@ -7,8 +7,8 @@
     </url>
 
     <url>
-        <loc>http://yoursite-url/2018/05/23/hyperledger-architecture1/</loc>
-        <lastmod>2018-05-24T13:36:43.409Z</lastmod>
+        <loc>http://yoursite-url/2018/05/25/mocha-exceeding-2000ms/</loc>
+        <lastmod>2018-05-25T10:57:38.323Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +16,15 @@
 
     <url>
         <loc>http://yoursite-url/2018/05/24/generate-certification-file/</loc>
-        <lastmod>2018-05-24T13:35:44.156Z</lastmod>
+        <lastmod>2018-05-24T14:11:16.074Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://yoursite-url/2018/05/23/hyperledger-architecture1/</loc>
+        <lastmod>2018-05-24T13:36:43.409Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
